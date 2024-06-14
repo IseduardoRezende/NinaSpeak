@@ -7,7 +7,9 @@ Nina is an manual learning Chatbot with some data stored for simple conversation
 
 2º Run the project
 
-*Observation*: The speech library only runs on Windows!
+<h2>Observations:</h2>
+
+*The speech library only runs on Windows!*
 
 Anything just call.
 
