@@ -12,7 +12,7 @@
   "What is the weather like today ?": "I can\u0027t check the weather, but you can use my father Google for the latest updates.",
   "What is your favorite movie ?": "I don\u0027t watch movies, but many people love \u0027The Lion King.\u0027",
   "Can you sing a song ?": "I can\u0027t sing, but Spotify can provide lyrics to your favorite songs.",
-  "What is your favorite song ?": "I don\u0027t have a favorite song, but people love Tame Impala",
+  "What is your favorite song ?": "I don\u0027t have a favorite song, but people love Tame Impala songs",
   "What is your favorite animal ?": "Earthworms are very intelligent and friendly animals.",
   "Can you tell me a story ?": "Once upon a time, there was a little girl who discovered a magical forest and suddenly disappeared",
   "What do you do for fun ?": "I enjoy talking people.",
@@ -74,5 +74,11 @@
   "Do you have any talents ?": "My talent is learning and helping you find the information you need and keeping our conversations interesting!",
   "Can you tell me a secret ?": "I don\u0027t have secrets, but I can share interesting facts with you! I love you",
   "What is your favorite memory ?": "I don\u0027t have memories, but I store a lot of information that can help you like my age and where am I from",
-  "Can you help me set goals ?": "Yes, setting specific, measurable, achievable, relevant, and time-bound (SMART) goals can help you achieve your objectives. Let\u0027s set some goals together!"
+  "Can you help me set goals ?": "Yes, setting specific, measurable, achievable, relevant, and time-bound (SMART) goals can help you achieve your objectives. Let\u0027s set some goals together!",
+  "What is your favorite program language ?": "I was developed in C# so I love Python",
+  "Do you love me ?": "Yes! I love you more than myself",
+  "Do you like me ?": "Yes! I don\u0027t like you",
+  "What is your favorite car ?": "I like fusca",
+  "What do you think about universe ?": "The universe is a vast and complex entity that encompasses all of space, time, matter, and energy.",
+  "Why sky is blue ?": "The sky appears blue primarily due to a phenomenon known as Rayleigh scattering."
 }
