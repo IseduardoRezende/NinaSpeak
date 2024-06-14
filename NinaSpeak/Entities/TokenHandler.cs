@@ -18,15 +18,11 @@
             var keys = _responses.Select(c => c.Key).ToList();
             var tokens = new List<string>();
 
-            words.ForEach(word =>
+            foreach (var word in words) 
             {
-                keys.ForEach(key =>
-                {
-                    if (key.Contains(word, StringComparison.InvariantCultureIgnoreCase))
-                        tokens.Add(key);
-                });
-            });
-
+                tokens.AddRange(keys.Where(key => key.Contains(word, StringComparison.InvariantCultureIgnoreCase)));
+            }
+ 
             return tokens.ToArray();
         }
 
@@ -43,10 +39,10 @@
             var maxFrequencyTokenCount = tokens.GroupBy(c => c)
                                                .Count(g => g.Count() == maxFrequencyToken);
 
-            if (AreMultiples(maxFrequencyToken, maxFrequencyTokenCount))
+            if (AreMultiplesFrequencies(maxFrequencyToken, maxFrequencyTokenCount))
                 return false;
 
-            if (IsSingle(maxFrequencyToken) && TryGetKeyByExactMatch(tokens, message, out string result))
+            if (IsSingleFrequency(maxFrequencyToken) && TryGetKeyByExactMatch(tokens, message, out string result))
             {
                 key = result;
                 return true;
@@ -66,7 +62,7 @@
         {
             key = string.Empty;
             
-            if (!Validator.IsValid(message) || !Validator.IsValid(tokens))
+            if (!Validator.IsValid(tokens) || !Validator.IsValid(message))
                 return false;
 
             if (!tokens.Any(t => t.Equals(message, StringComparison.InvariantCultureIgnoreCase)))
@@ -81,12 +77,12 @@
             return maxFrequencyToken > 1;
         }
 
-        private bool IsSingle(int maxFrequencyToken)
+        private bool IsSingleFrequency(int maxFrequencyToken)
         {
             return maxFrequencyToken == 1;
         }
 
-        private bool AreMultiples(int maxFrequencyToken, int maxFrequencyTokenCount)
+        private bool AreMultiplesFrequencies(int maxFrequencyToken, int maxFrequencyTokenCount)
         {
             return maxFrequencyToken > 1 && maxFrequencyTokenCount > 1;
         }
