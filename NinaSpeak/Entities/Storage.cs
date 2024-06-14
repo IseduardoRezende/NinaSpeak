@@ -8,18 +8,21 @@ namespace NinaSpeak.Entities
 
         public static void Save(Dictionary<string, string> dictionary)
         {
-            if (dictionary == null)
+            if (!Validator.IsValid(dictionary))
                 return;
 
-            var json = JsonSerializer.Serialize(dictionary, new JsonSerializerOptions(JsonSerializerDefaults.Web) { WriteIndented = true });           
-            File.WriteAllText(FileName, json);
+            using var fileWriter = new StreamWriter(FileName);
+            
+            var json = JsonSerializer.Serialize(dictionary, new JsonSerializerOptions(JsonSerializerDefaults.Web) { WriteIndented = true });                      
+
+            fileWriter.Write(json);
         }
 
         public static Dictionary<string, string> Load()
         {
             if (!File.Exists(FileName))
             {
-                using FileStream _ = new(FileName, FileMode.Create);
+                using FileStream _ = new(FileName, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);                
                 return new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
             }
 

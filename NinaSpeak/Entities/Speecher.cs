@@ -10,7 +10,7 @@ namespace NinaSpeak.Entities
                 
         public void Speak(Response response)
         {
-            if (response == null)
+            if (!Validator.IsValid(response))
                 return;
 
             _speech.Speak(InitializePromptBuilder(response));
@@ -18,7 +18,7 @@ namespace NinaSpeak.Entities
 
         private PromptBuilder InitializePromptBuilder(Response response)
         {
-            if (response == null)
+            if (!Validator.IsValid(response))
                 return new PromptBuilder();
 
             var builder = new PromptBuilder(_cultureInfo);

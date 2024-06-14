@@ -51,16 +51,21 @@
 
         private bool WillTeach(string message)
         {
-            return message.Equals("Y", StringComparison.OrdinalIgnoreCase);
+            return Validator.IsValid(message) && message.Equals("Y", StringComparison.OrdinalIgnoreCase);
         }
 
         private bool CanRespond(string message, out string response)
-        {
-            return _response.TryGet(message!, out response);
+        {          
+            response = string.Empty;
+
+            return Validator.IsValid(message) && _response.TryGet(message!, out response);
         }
 
         private void Respond(string response)
         {
+            if (!Validator.IsValid(response))
+                return;
+
             Console.WriteLine(response);
             _speech.Speak(new Response(response));
         }
@@ -76,7 +81,7 @@
 
         private bool IsNeedToExit(string message)
         {
-            return message == Message.ExitValue;
+            return Validator.IsValid(message) && message == Message.ExitValue;
         }
 
         private void ErrorMessage()

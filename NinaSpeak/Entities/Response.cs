@@ -37,12 +37,14 @@
             if (!Validator.IsValid(message))
                 return string.Empty;
 
-            var tokens = GetTokens(message);
+            var token = new TokenHandler(_responses);
 
-            if (!TryGetKeyByTokens(tokens, out message))
+            var tokens = token.GetTokens(message);
+
+            if (!token.TryGetKey(tokens, message, out string key))
                 return string.Empty;
 
-            return _responses[message];
+            return _responses[key];
         }
 
         public bool TryGet(string message, out string response)
@@ -52,56 +54,14 @@
             if (!Validator.IsValid(message))
                 return false;
 
-            var tokens = GetTokens(message);
+            var token = new TokenHandler(_responses);
 
-            if (!TryGetKeyByTokens(tokens, out message))
+            var tokens = token.GetTokens(message);
+
+            if (!token.TryGetKey(tokens, message, out string key))
                 return false;
 
-            response = _responses[message];
-            return true;
-        }
-
-        private string[] GetTokens(string message)
-        {
-            if (!Validator.IsValid(message))
-                return Array.Empty<string>();   
-
-            var words = message.Split(' ').ToList();
-            var keys = _responses.Select(c => c.Key).ToList();
-            var tokens = new List<string>();
-
-            words.ForEach(word =>
-            {
-                keys.ForEach(key =>
-                {
-                    if (key.Contains(word, StringComparison.InvariantCultureIgnoreCase))
-                        tokens.Add(key);
-                });
-            });
-
-            return tokens.ToArray();
-        }
-
-        private bool TryGetKeyByTokens(string[] tokens, out string key)
-        {
-            key = string.Empty;
-
-            if (tokens == null || !tokens.Any())
-                return false;
-            
-            var maxFrequencyToken = tokens.GroupBy(c => c)
-                                          .Max(g => g.Count());
-
-            var maxFrequencyTokenCount = tokens.GroupBy(c => c)
-                                               .Count(g => g.Count() == maxFrequencyToken);
-
-            if (maxFrequencyTokenCount > 1)
-                return false;
-
-            var highestFrequencyToken = tokens.GroupBy(c => c)
-                                              .MaxBy(g => g.Count())!;
-
-            key = highestFrequencyToken.Key;
+            response = _responses[key];
             return true;
         }
 

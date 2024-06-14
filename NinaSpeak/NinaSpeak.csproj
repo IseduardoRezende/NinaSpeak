@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="root-interaction.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="root-interaction.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Speech" Version="8.0.0" />
   </ItemGroup>
 

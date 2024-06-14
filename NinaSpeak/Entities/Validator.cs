@@ -11,5 +11,10 @@
         {
             return !string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value);
         }
+
+        public static bool IsValid<T>(this IEnumerable<T> values)
+        {
+            return values is not null && values.Any();
+        }
     }
 }

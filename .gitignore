@@ -135,4 +135,4 @@ _NCrunch*
 *.bin
 *.v2
 *.vsidx
-*.json
+.vs/NinaSpeak/v17/DocumentLayout.json
