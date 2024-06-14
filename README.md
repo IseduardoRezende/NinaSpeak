@@ -14,3 +14,7 @@ Nina is an manual learning Chatbot with some data stored for simple conversation
 Anything just call.
 
 Hope you like it ;)
+
+<h2>Nina Running:</h2>
+
+![image](https://github.com/IseduardoRezende/NinaSpeak/assets/109261717/4e4fa72e-c9bb-4422-9d1d-91c89fc82fbb)
