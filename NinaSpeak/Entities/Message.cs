@@ -6,7 +6,7 @@
         public const string Teaching    = "Write Answer:";
         public const string Exit        = "(Tap $ to leave chat)";
         public const string Interact    = "Write what you want... (try interact with me)";
-        public const string Error       = "Invalid message detected, please try again...";
+        public const string Error       = "Invalid value detected, please try again...";
 
         public Message() { }
 

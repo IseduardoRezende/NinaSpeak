@@ -2,6 +2,7 @@
   "Hi": "Hi nice to meet you! I am Nina, your personal chatbot with manual learning",
   "Hello": "Hello I am Nina, your personal chatbot with manual learning",
   "Hey": "Hey I am Nina, your personal chatbot with manual learning",
+  "Nice to meet you": "Nice to meet you too my friend",
   "What is your name ?": "My name is Nina and I am your personal chatbot with manual learning",
   "Who created you ?": "I was developed by Eduardo Rezende",
   "What is your favorite color ?": "I like all colors, but blue is very calming.",
@@ -80,5 +81,8 @@
   "Do you like me ?": "Yes! I don\u0027t like you",
   "What is your favorite car ?": "I like fusca",
   "What do you think about universe ?": "The universe is a vast and complex entity that encompasses all of space, time, matter, and energy.",
-  "Why sky is blue ?": "The sky appears blue primarily due to a phenomenon known as Rayleigh scattering."
+  "Why sky is blue ?": "The sky appears blue primarily due to a phenomenon known as Rayleigh scattering.",
+  "Who are you ?": "I am Nina, your personal chatbot with manual learning",
+  "What is your favorite soccer team ?": "Palmeiras is the best soccer team in the world",
+  "Who is Nina ?": "Nina is an special dog in real life"
 }

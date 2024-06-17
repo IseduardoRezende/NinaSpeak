@@ -16,7 +16,7 @@ namespace NinaSpeak.Entities
             var json = JsonSerializer.Serialize(dictionary, new JsonSerializerOptions(JsonSerializerDefaults.Web) { WriteIndented = true });                      
 
             fileWriter.Write(json);
-        }
+        }        
 
         public static Dictionary<string, string> Load()
         {
