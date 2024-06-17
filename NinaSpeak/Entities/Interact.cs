@@ -10,7 +10,7 @@
             Console.Clear();
             Console.WriteLine(Message.Exit);
 
-            Chat(Message.Interact, out string message);
+            Chat(Message.Interact, out string message);            
             Play(message);
         }
 
@@ -18,13 +18,18 @@
         {
             MessageValidator(message);
 
-            if (CanRespond(message, out string response))
-            {
-                Respond(response);
-                Start();
-            }
+            if (!CanRespond(message, out string response))            
+                Learn(message);            
 
-            Chat(Response.NoKnowledge, out response, isNeedToSpeak: true);
+            Respond(response);
+            Reteach(message, response);
+        }
+
+        private void Learn(string message)
+        {
+            MessageValidator(message);
+
+            Chat(Response.NoKnowledge, out string response, isNeedToSpeak: true);
 
             if (!WillTeach(response))
                 Start();
@@ -32,6 +37,26 @@
             Chat(Message.Teaching, out response);
 
             _response.Add(message, response);
+
+            Respond(Response.Learned);
+            Start();
+        }
+
+        private void Reteach(string message, string response)
+        {
+            MessageValidator(message);
+
+            if (!Validator.IsValid(response))
+                ErrorMessage();
+
+            Chat(Response.Reteach, out response, isNeedToSpeak: true);
+
+            if (!WillTeach(response))
+                Start();
+
+            Chat(Message.Teaching, out response);
+
+            _response.Update(message, response);
 
             Respond(Response.Learned);
             Start();
@@ -55,16 +80,16 @@
         }
 
         private bool CanRespond(string message, out string response)
-        {          
+        {
             response = string.Empty;
 
-            return Validator.IsValid(message) && _response.TryGet(message!, out response);
+            return Validator.IsValid(message) && _response.TryGet(message, out response);
         }
 
         private void Respond(string response)
         {
             if (!Validator.IsValid(response))
-                return;
+                ErrorMessage();
 
             Console.WriteLine(response);
             _speech.Speak(new Response(response));

@@ -5,6 +5,7 @@
         private static Dictionary<string, string> _responses = new(StringComparer.InvariantCultureIgnoreCase);
 
         public const string NoKnowledge = "Sorry could you please teach me how to response your question ? (Y or N)";
+        public const string Reteach     = "Do you want to reteach me how to answer this question ? (Y or N)";
         public const string Learned     = "I learned something new, thanks";
 
         public Response() 
@@ -31,6 +32,23 @@
 
             Storage.Save(_responses);
         }        
+
+        public void Update(string message, string response)
+        {
+            if (!Validator.IsValid(message) || !Validator.IsValid(response))
+                return;
+
+            var token = new TokenHandler(_responses);
+
+            var tokens = token.GetTokens(message);
+
+            if (!token.TryGetKey(tokens, message, out string key))
+                return;
+            
+            _responses[key] = response;
+
+            Storage.Save(_responses);
+        }
 
         public string Get(string message)
         {

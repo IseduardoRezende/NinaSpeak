@@ -58,7 +58,7 @@
             return true;
         }
 
-        private bool TryGetKeyByExactMatch(string[] tokens, string message, out string key)
+        public bool TryGetKeyByExactMatch(string[] tokens, string message, out string key)
         {
             key = string.Empty;
             
